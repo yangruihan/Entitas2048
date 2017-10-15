@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
             .Add(new InitializeRectSystem(_contexts))
 
             .Add(new AddRectViewSystem(_contexts))
+            .Add(new ChangeRectViewByValueSystem(_contexts))
             ;
     }
 }
