@@ -19,7 +19,7 @@ public class InitializeRectSystem : IInitializeSystem
             {
                 var entity = _contexts.game.CreateEntity();
                 entity.AddId(i * width + j);
-                entity.AddPosition(new IntVector2(i, j));
+                entity.AddPosition(new IntVector2(j, i));
                 entity.isRect = true;
                 entity.AddValue(0);
             }

@@ -9,20 +9,22 @@
 public static class GameComponentsLookup {
 
     public const int ClickInput = 0;
-    public const int GameGlobals = 1;
-    public const int Id = 2;
-    public const int Position = 3;
-    public const int Rect = 4;
-    public const int RectGlobals = 5;
-    public const int Slide = 6;
-    public const int Value = 7;
-    public const int View = 8;
-    public const int ViewRoot = 9;
+    public const int Destroyed = 1;
+    public const int GameGlobals = 2;
+    public const int Id = 3;
+    public const int Position = 4;
+    public const int Rect = 5;
+    public const int RectGlobals = 6;
+    public const int Slide = 7;
+    public const int Value = 8;
+    public const int View = 9;
+    public const int ViewRoot = 10;
 
-    public const int TotalComponents = 10;
+    public const int TotalComponents = 11;
 
     public static readonly string[] componentNames = {
         "ClickInput",
+        "Destroyed",
         "GameGlobals",
         "Id",
         "Position",
@@ -36,6 +38,7 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(ClickInputComponent),
+        typeof(DestroyedComponent),
         typeof(GameGlobalsComponent),
         typeof(IdComponent),
         typeof(PositionComponent),

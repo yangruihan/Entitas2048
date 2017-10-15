@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
             .Add(new AddRectViewSystem(contexts))
             .Add(new ChangeValueSystem(contexts))
             .Add(new ChangeRectViewByValueSystem(contexts))
+            .Add(new DestroyGameEntitySystem(contexts))
             ;
     }
 }

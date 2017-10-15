@@ -17,5 +17,9 @@ public class RectViewBehaviour : MonoBehaviour
 
             text.text = value.ToString();
         }
+        else
+        {
+            text.gameObject.SetActive(false);
+        }
     }
 }
