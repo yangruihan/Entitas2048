@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     Systems CreateSystems(Contexts contexts)
     {
         return new Feature("Game")
+            .Add(new InitializeRectSystem(_contexts))
             ;
     }
 }
