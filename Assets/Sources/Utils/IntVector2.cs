@@ -2,6 +2,8 @@ using UnityEngine;
 
 public struct IntVector2
 {
+    public static IntVector2 None = new IntVector2(-1, -1);
+
     public int X;
     public int Y;
 

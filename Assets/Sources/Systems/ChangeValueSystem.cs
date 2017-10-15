@@ -32,13 +32,19 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            ChangeValue(entity.slide.Dir);
+            if (ChangeValue(entity.slide.Dir))
+            {
+                _contexts.game.ReplaceTick(_contexts.game.tick.Value + 1);
+            }
+
             entity.isDestroyed = true;
         }
     }
 
-    private void ChangeValue(Vector2 dir)
+    private bool ChangeValue(Vector2 dir)
     {
+        bool change = false;
+
         _changePos.Clear();
         dir.y = -dir.y;
 
@@ -50,7 +56,8 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
             {
                 for (int j = _gameGlobals.BoardWidth - 2; j >= 0; j--)
                 {
-                    CheckNext(i, j, normalDir);
+                    if (CheckNext(i, j, normalDir))
+                        change = true;
                 }
             }
         }
@@ -60,7 +67,8 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
             {
                 for (int j = 1; j < _gameGlobals.BoardWidth; j++)
                 {
-                    CheckNext(i, j, normalDir);
+                    if (CheckNext(i, j, normalDir))
+                        change = true;
                 }
             }
         }
@@ -70,7 +78,8 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
             {
                 for (int i = _gameGlobals.BoardHeight - 2; i >= 0; i--)
                 {
-                    CheckNext(i, j, normalDir);
+                    if (CheckNext(i, j, normalDir))
+                        change = true;
                 }
             }
         }
@@ -80,13 +89,16 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
             {
                 for (int i = 1; i < _gameGlobals.BoardHeight; i++)
                 {
-                    CheckNext(i, j, normalDir);
+                    if (CheckNext(i, j, normalDir))
+                        change = true;
                 }
             }
         }
+
+        return change;
     }
 
-    private void CheckNext(int i, int j, IntVector2 normalDir)
+    private bool CheckNext(int i, int j, IntVector2 normalDir)
     {
         IntVector2 currentPos;
         GameEntity currentEntity = null;
@@ -99,7 +111,7 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
         currentEntity = _contexts.game.GetEntitiesWithPosition(currentPos).First();
 
         if (currentEntity == null || currentEntity.value.Value == 0)
-            return;
+            return false;
 
         nextPos = currentPos;
 
@@ -123,7 +135,7 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
                 currentEntity.ReplaceValue(0);
                 emptyEntity = null;
                 _changePos.Add(nextPos);
-                return;
+                return true;
             }
             else if (nextEntity.value.Value == 0)
             {
@@ -135,7 +147,10 @@ public class ChangeValueSystem : ReactiveSystem<GameEntity>
         {
             emptyEntity.ReplaceValue(currentEntity.value.Value);
             currentEntity.ReplaceValue(0);
+            return true;
         }
+
+        return false;
     }
 
     private bool ValidPos(IntVector2 pos)

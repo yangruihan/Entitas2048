@@ -13,5 +13,7 @@ public class InitialGameSystem : IInitializeSystem
     public void Initialize()
     {
         _contexts.game.gameGlobals.value.SlideSensitive = Screen.width / 8f;
+
+        _contexts.game.ReplaceGameStatus(GameStatus.Run);
     }
 }

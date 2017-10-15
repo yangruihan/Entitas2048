@@ -32,11 +32,15 @@ public class GameController : MonoBehaviour
             .Add(new InitialGameSystem(contexts))
             .Add(new InitializeRectSystem(contexts))
 
+            .Add(new InitializeCompleteSystem(contexts))
+
             .Add(new ClickInputSystem(contexts))
 
+            .Add(new ChangeGameStatusSystem(contexts))
             .Add(new AddRectViewSystem(contexts))
             .Add(new ChangeValueSystem(contexts))
             .Add(new ChangeRectViewByValueSystem(contexts))
+            .Add(new UpdateCurrentTickSystem(contexts))
             .Add(new DestroyGameEntitySystem(contexts))
             ;
     }

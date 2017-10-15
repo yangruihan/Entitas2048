@@ -11,26 +11,30 @@ public static class GameComponentsLookup {
     public const int ClickInput = 0;
     public const int Destroyed = 1;
     public const int GameGlobals = 2;
-    public const int Id = 3;
-    public const int Position = 4;
-    public const int Rect = 5;
-    public const int RectGlobals = 6;
-    public const int Slide = 7;
-    public const int Value = 8;
-    public const int View = 9;
-    public const int ViewRoot = 10;
+    public const int GameStatus = 3;
+    public const int Id = 4;
+    public const int Position = 5;
+    public const int Rect = 6;
+    public const int RectGlobals = 7;
+    public const int Slide = 8;
+    public const int Tick = 9;
+    public const int Value = 10;
+    public const int View = 11;
+    public const int ViewRoot = 12;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "ClickInput",
         "Destroyed",
         "GameGlobals",
+        "GameStatus",
         "Id",
         "Position",
         "Rect",
         "RectGlobals",
         "Slide",
+        "Tick",
         "Value",
         "View",
         "ViewRoot"
@@ -40,11 +44,13 @@ public static class GameComponentsLookup {
         typeof(ClickInputComponent),
         typeof(DestroyedComponent),
         typeof(GameGlobalsComponent),
+        typeof(GameStatusComponent),
         typeof(IdComponent),
         typeof(PositionComponent),
         typeof(RectComponent),
         typeof(RectGlobalsComponent),
         typeof(SlideComponent),
+        typeof(TickComponent),
         typeof(ValueComponent),
         typeof(ViewComponent),
         typeof(ViewRootComponent)
