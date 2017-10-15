@@ -11,13 +11,17 @@ public class InitializeRectSystem : IInitializeSystem
 
     public void Initialize()
     {
-        for (int i = 0; i < 4; i++)
+        var height = _contexts.game.gameGlobals.value.BoardHeight;
+        var width = _contexts.game.gameGlobals.value.BoardWidth;
+        for (int i = 0; i < height; i++)
         {
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < width; j++)
             {
                 var entity = _contexts.game.CreateEntity();
+                entity.AddId(i * width + j);
                 entity.AddPosition(new IntVector2(i, j));
                 entity.isRect = true;
+                entity.AddValue(0);
             }
         }
     }

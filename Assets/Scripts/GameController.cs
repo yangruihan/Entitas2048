@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public GameGlobals GameGlobals;
     public RectGlobals RectGlobals;
     public RectTransform ViewRoot;
 
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         _contexts = Contexts.sharedInstance;
+        _contexts.game.SetGameGlobals(GameGlobals);
         _contexts.game.SetRectGlobals(RectGlobals);
         _contexts.game.SetViewRoot(ViewRoot);
 
