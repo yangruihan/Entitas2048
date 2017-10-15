@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public RectGlobals RectGlobals;
 
     private Contexts _contexts;
     private Systems _systems;
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         _contexts = Contexts.sharedInstance;
+        _contexts.game.SetRectGlobals(RectGlobals);
 
         _systems = CreateSystems(_contexts);
         _systems.Initialize();
@@ -24,6 +26,8 @@ public class GameController : MonoBehaviour
     {
         return new Feature("Game")
             .Add(new InitializeRectSystem(_contexts))
+
+            .Add(new AddRectViewSystem(_contexts))
             ;
     }
 }

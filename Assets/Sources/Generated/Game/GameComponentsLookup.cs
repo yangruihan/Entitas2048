@@ -10,16 +10,19 @@ public static class GameComponentsLookup {
 
     public const int Position = 0;
     public const int Rect = 1;
+    public const int RectGlobals = 2;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 3;
 
     public static readonly string[] componentNames = {
         "Position",
-        "Rect"
+        "Rect",
+        "RectGlobals"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(PositionComponent),
-        typeof(RectComponent)
+        typeof(RectComponent),
+        typeof(RectGlobalsComponent)
     };
 }
