@@ -24,6 +24,9 @@ public class ChangeGameStatusSystem : ReactiveSystem<GameEntity>
                 case GameStatus.Over:
                     Debug.Log("Game Over");
                     break;
+                case GameStatus.Win:
+                    Debug.Log("Game Win");
+                    break;
             }
         }
     }

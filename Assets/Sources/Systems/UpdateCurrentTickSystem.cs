@@ -30,17 +30,25 @@ public class UpdateCurrentTickSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            if (GetRandomEmptyPos(out _genPos))
+            var gameEntities = _contexts.game.GetEntitiesWithValue(2048);
+            if (gameEntities.Count() > 0)
             {
-                var gameEntity = _contexts.game.GetEntitiesWithPosition(_genPos).First();
-                if (gameEntity != null)
-                {
-                    gameEntity.ReplaceValue(_contexts.game.gameGlobals.value.RectInitValue);
-                }
+                _contexts.game.ReplaceGameStatus(GameStatus.Win);
             }
             else
             {
-                _contexts.game.ReplaceGameStatus(GameStatus.Over);
+                if (GetRandomEmptyPos(out _genPos))
+                {
+                    var gameEntity = _contexts.game.GetEntitiesWithPosition(_genPos).First();
+                    if (gameEntity != null)
+                    {
+                        gameEntity.ReplaceValue(_contexts.game.gameGlobals.value.RectInitValue);
+                    }
+                }
+                else
+                {
+                    _contexts.game.ReplaceGameStatus(GameStatus.Over);
+                }
             }
         }
     }
