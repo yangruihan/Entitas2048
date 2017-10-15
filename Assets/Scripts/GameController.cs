@@ -29,10 +29,14 @@ public class GameController : MonoBehaviour
     Systems CreateSystems(Contexts contexts)
     {
         return new Feature("Game")
-            .Add(new InitializeRectSystem(_contexts))
+            .Add(new InitialGameSystem(contexts))
+            .Add(new InitializeRectSystem(contexts))
 
-            .Add(new AddRectViewSystem(_contexts))
-            .Add(new ChangeRectViewByValueSystem(_contexts))
+            .Add(new ClickInputSystem(contexts))
+
+            .Add(new AddRectViewSystem(contexts))
+            .Add(new ChangeValueSystem(contexts))
+            .Add(new ChangeRectViewByValueSystem(contexts))
             ;
     }
 }

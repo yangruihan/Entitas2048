@@ -6,4 +6,6 @@ public class GameGlobals : ScriptableObject
 {
     public int BoardWidth = 4;
     public int BoardHeight = 4;
+
+    public float SlideSensitive = Screen.width / 8f;
 }
