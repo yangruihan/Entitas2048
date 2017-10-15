@@ -12,22 +12,22 @@ public partial class GameContext {
     public ViewRootComponent viewRoot { get { return viewRootEntity.viewRoot; } }
     public bool hasViewRoot { get { return viewRootEntity != null; } }
 
-    public GameEntity SetViewRoot(UnityEngine.GameObject newViewRoot) {
+    public GameEntity SetViewRoot(UnityEngine.RectTransform newValue) {
         if (hasViewRoot) {
             throw new Entitas.EntitasException("Could not set ViewRoot!\n" + this + " already has an entity with ViewRootComponent!",
                 "You should check if the context already has a viewRootEntity before setting it or use context.ReplaceViewRoot().");
         }
         var entity = CreateEntity();
-        entity.AddViewRoot(newViewRoot);
+        entity.AddViewRoot(newValue);
         return entity;
     }
 
-    public void ReplaceViewRoot(UnityEngine.GameObject newViewRoot) {
+    public void ReplaceViewRoot(UnityEngine.RectTransform newValue) {
         var entity = viewRootEntity;
         if (entity == null) {
-            entity = SetViewRoot(newViewRoot);
+            entity = SetViewRoot(newValue);
         } else {
-            entity.ReplaceViewRoot(newViewRoot);
+            entity.ReplaceViewRoot(newValue);
         }
     }
 
@@ -49,17 +49,17 @@ public partial class GameEntity {
     public ViewRootComponent viewRoot { get { return (ViewRootComponent)GetComponent(GameComponentsLookup.ViewRoot); } }
     public bool hasViewRoot { get { return HasComponent(GameComponentsLookup.ViewRoot); } }
 
-    public void AddViewRoot(UnityEngine.GameObject newViewRoot) {
+    public void AddViewRoot(UnityEngine.RectTransform newValue) {
         var index = GameComponentsLookup.ViewRoot;
         var component = CreateComponent<ViewRootComponent>(index);
-        component.ViewRoot = newViewRoot;
+        component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceViewRoot(UnityEngine.GameObject newViewRoot) {
+    public void ReplaceViewRoot(UnityEngine.RectTransform newValue) {
         var index = GameComponentsLookup.ViewRoot;
         var component = CreateComponent<ViewRootComponent>(index);
-        component.ViewRoot = newViewRoot;
+        component.Value = newValue;
         ReplaceComponent(index, component);
     }
 

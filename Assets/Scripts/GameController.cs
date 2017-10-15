@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public RectGlobals RectGlobals;
-    public GameObject ViewRoot;
+    public RectTransform ViewRoot;
 
     private Contexts _contexts;
     private Systems _systems;
