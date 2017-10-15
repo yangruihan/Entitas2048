@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public RectGlobals RectGlobals;
+    public GameObject ViewRoot;
 
     private Contexts _contexts;
     private Systems _systems;
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour
     {
         _contexts = Contexts.sharedInstance;
         _contexts.game.SetRectGlobals(RectGlobals);
+        _contexts.game.SetViewRoot(ViewRoot);
 
         _systems = CreateSystems(_contexts);
         _systems.Initialize();

@@ -11,18 +11,21 @@ public static class GameComponentsLookup {
     public const int Position = 0;
     public const int Rect = 1;
     public const int RectGlobals = 2;
+    public const int ViewRoot = 3;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
         "Position",
         "Rect",
-        "RectGlobals"
+        "RectGlobals",
+        "ViewRoot"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(PositionComponent),
         typeof(RectComponent),
-        typeof(RectGlobalsComponent)
+        typeof(RectGlobalsComponent),
+        typeof(ViewRootComponent)
     };
 }

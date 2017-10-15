@@ -27,6 +27,7 @@ public class AddRectViewSystem : ReactiveSystem<GameEntity>
         foreach (var entity in entities)
         {
             var rectObj = GameObject.Instantiate(rectPrefab, entity.position.Position.ToVector3(), Quaternion.identity);
+            rectObj.transform.SetParent(_contexts.game.viewRoot.ViewRoot.transform);
         }
     }
 }
